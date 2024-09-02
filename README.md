@@ -19,4 +19,24 @@ You need to env variable should to exported in your environment:
 - GROQ_API_KEY
 - MONGO_URI
 
+Export these keys in your terminal like following:
+
+      export GROQ_API_KEY="<your api key>"
+      export MONGO_URI="<your uri>"
+
+
+## How to Use
+Once the building is done run the backend:
+
+    go build cmd/go-for-groq/main.go (build)
+    ./main (run)
+
+- First, Create a user and save the returned user_id to ask query
+
+       curl -X POST http://localhost:8080/user -H "Content-Type: application/json" -d '{"name": "John", "surname":Doe"}'  
+
+- Second, Send query
+
+       curl -X POST http://localhost:8080/query -H "Content-Type: application/json" -d '{"query": "who is the founder of Manner waffer?" , "user_id":"<your user id>"}'
+
 
